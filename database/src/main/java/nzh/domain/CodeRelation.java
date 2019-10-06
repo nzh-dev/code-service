@@ -1,21 +1,21 @@
 package nzh.domain;
 
 import javax.persistence.*;
-import java.util.Collection;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Created by nzh-dev on 05/10/2019.
  */
 @Entity
-@Table(name = "code_relation", schema = "public", catalog = "DEV")
+@Table(name = "code_relation")
 public class CodeRelation extends Audit {
     private Integer id;
     private String parentValueId;
     private String childValueId;
     private String creator;
     private Integer optlock;
-    //private Collection<Code> codeByCodeRelationParentValueId;
-    //private Collection<Code> codeByCodeRelationChildValueId;
+    @JsonIgnore
+    private Code childCode;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -94,24 +94,14 @@ public class CodeRelation extends Audit {
         result = 31 * result + (optlock != null ? optlock.hashCode() : 0);
         return result;
     }
-/*
-    @OneToMany(mappedBy = "codeParentRelationByValueId", cascade = CascadeType.ALL, orphanRemoval = true)
-    public Collection<Code> getCodeByCodeRelationParentValueId() {
-        return codeByCodeRelationParentValueId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "child_value_id", referencedColumnName = "value_id", nullable = false, insertable = false, updatable = false)
+    public Code getChildCode() {
+        return childCode;
     }
 
-    public void setCodeByCodeRelationParentValueId(Collection<Code> codeByCodeRelationParentValueId) {
-        this.codeByCodeRelationParentValueId = codeByCodeRelationParentValueId;
+    public void setChildCode(Code childCode) {
+        this.childCode = childCode;
     }
-
-
-    @OneToMany(mappedBy = "codeChildRelationByValueId", cascade = CascadeType.ALL, orphanRemoval = true)
-    public Collection<Code> getCodeByCodeRelationChildValueId() {
-        return codeByCodeRelationChildValueId;
-    }
-
-    public void setCodeByCodeRelationChildValueId(Collection<Code> codeByCodeRelationChildValueId) {
-        this.codeByCodeRelationChildValueId = codeByCodeRelationChildValueId;
-    }
-    */
 }

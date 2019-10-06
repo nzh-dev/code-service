@@ -1,23 +1,120 @@
-# code-service
-My first GitHub project - code-service
+# Project: code-service
 
-# Create DB Container
+This is my example and training project that creates application called code-service.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+Note! Instruction have verified only with Mac OS X 10.14.6.
+
+### Prerequisites
+
+* Java 8
+* Gradle 5.3.1
+* Docker container execution environment
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Clone the code-service project from GitHub
+
+```
+git clone https://github.com/nzh-dev/code-service.git
+```
+
+Create DB container
+
+```
+cd database
 docker build -t nzh-dev-postgres .
+cd ..
+```
 
-# Start Containers
+Start DB container
+```
 docker-compose up
+```
 
-# Stop Containers
-docker-compose down
+Start code-service application (Spring Boot)
 
-# Setup
-# DB Container - nzh-dev-postgres
-
-# List running containers
-docker ps
-
-# Login to container
-docker exec -it <container id or name> /bin/bash
-
-# Start Spring Boot application - backend
+```
 gradle build && java -jar backend/build/libs/backend-0.0.1-SNAPSHOT.jar
+```
+
+code-service should now be up and running on your local environment.
+
+Try to search codes using your browser or tool like [Postman](https://www.getpostman.com/).
+```
+http://localhost:8080/codes
+```
+
+Try to search code using id.
+```
+http://localhost:8080/codes/70
+```
+
+## Deployment
+
+* Intended for local development and training purposes only.
+* Not supposed to be used in production.
+
+## Built With
+
+* [Java](https://www.java.com/) - Programming Language
+* [Gradle](https://gradle.org/) - Build Tool
+* [Spring Boot](https://spring.io/projects/spring-boot) - Create stand-alone applications
+* [Hibernate](https://hibernate.org/) - Object Relational Mapping (ORM)
+* [Postgres](https://www.postgresql.org/) - Relational Database
+* [Docker](https://www.docker.com/) - Packaging Tool
+
+## Acknowledgments
+
+* Guides used during implementation
+    * [callicoder - spring-boot-jpa-hibernate-postgresql-restful-crud-api-example](https://www.callicoder.com/spring-boot-jpa-hibernate-postgresql-restful-crud-api-example/)
+
+## Development tips
+
+Start and Stop container
+```
+docker-compose up
+docker-compose down
+```
+Start code service - Spring Boot
+```
+gradle build && java -jar backend/build/libs/backend-0.0.1-SNAPSHOT.jar
+```
+List running containers
+```
+docker ps
+```
+Login to container
+```
+docker exec -it <container id or name> /bin/bash
+```
+
+## Todo list
+
+List of features and ideas to be added to code-service project in the future.
+
+* Tests
+    * Unit tests
+    * Integration tests
+    * e2e tests
+* DTO Class
+* Map Hibernate domain objects to DTO Class
+* Javadoc
+* Swagger UI
+* Linting
+* REST API - CRUD functions
+    * Read using code.value_id
+    * Create code
+    * Delete code
+    * Update code
+    * Create and Delete code_relations
+* Logging
+* Authentication
+* Security
+* Properties
+* Frontend application!

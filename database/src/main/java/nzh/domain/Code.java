@@ -1,12 +1,13 @@
 package nzh.domain;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by nzh-dev on 05/10/2019.
  */
 @Entity
-@Table(name = "code", schema = "public", catalog = "DEV")
+@Table(name = "code")
 public class Code extends Audit {
     private Integer id;
     private String codeId;
@@ -16,8 +17,7 @@ public class Code extends Audit {
     private String creator;
     private String modifier;
     private Integer optlock;
-    private CodeRelation codeParentRelationByValueId;
-    private CodeRelation codeChildRelationByValueId;
+    private Collection<CodeRelation> parentCodeRelationsByValueId;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -132,24 +132,13 @@ public class Code extends Audit {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "value_id", referencedColumnName = "parent_value_id", nullable = false, insertable = false, updatable = false)
-    public CodeRelation getCodeParentRelationByValueId() {
-        return codeParentRelationByValueId;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "childCode")
+    public Collection<CodeRelation> getParentCodeRelationsByValueId() {
+        return parentCodeRelationsByValueId;
     }
 
-    public void setCodeParentRelationByValueId(CodeRelation codeParentRelationByValueId) {
-        this.codeParentRelationByValueId = codeParentRelationByValueId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "value_id", referencedColumnName = "child_value_id", nullable = false, insertable = false, updatable = false)
-    public CodeRelation getCodeChildRelationByValueId() {
-        return codeChildRelationByValueId;
-    }
-
-    public void setCodeChildRelationByValueId(CodeRelation codeChildRelationByValueId) {
-        this.codeChildRelationByValueId = codeChildRelationByValueId;
+    public void setParentCodeRelationsByValueId(Collection<CodeRelation> parentCodeRelationsByValueId) {
+        this.parentCodeRelationsByValueId = parentCodeRelationsByValueId;
     }
 }
 
