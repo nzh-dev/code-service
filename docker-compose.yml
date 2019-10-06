@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+
+  database:
+    image: nzh-dev-postgres:latest
+    ports:
+      - "5432:5432"
+    container_name: database

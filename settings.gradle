@@ -1,0 +1,4 @@
+rootProject.name = 'code-service'
+include 'database'
+include 'backend'
+
