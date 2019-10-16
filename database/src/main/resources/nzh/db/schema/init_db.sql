@@ -3,8 +3,8 @@ CREATE SEQUENCE "public"."code_id_seq" INCREMENT BY 1 START WITH 10000;
 CREATE TABLE "public"."code"
 (
     id INTEGER DEFAULT nextval('code_id_seq'::regclass) NOT NULL,
-    code_id TEXT NOT NULL,
-    code_text TEXT NOT NULL,
+    set_id TEXT NOT NULL,
+    set_name TEXT NOT NULL,
     value_id TEXT NOT NULL,
     value_text TEXT NOT NULL,
     created TIMESTAMP NOT NULL,

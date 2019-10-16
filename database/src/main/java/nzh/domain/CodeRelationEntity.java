@@ -8,14 +8,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "code_relation")
-public class CodeRelation extends Audit {
+public class CodeRelationEntity extends Audit {
     private Integer id;
     private String parentValueId;
     private String childValueId;
     private String creator;
     private Integer optlock;
     @JsonIgnore
-    private Code childCode;
+    private CodeEntity childCode;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -73,7 +73,7 @@ public class CodeRelation extends Audit {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CodeRelation that = (CodeRelation) o;
+        CodeRelationEntity that = (CodeRelationEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (parentValueId != null ? !parentValueId.equals(that.parentValueId) : that.parentValueId != null)
@@ -97,11 +97,11 @@ public class CodeRelation extends Audit {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "child_value_id", referencedColumnName = "value_id", nullable = false, insertable = false, updatable = false)
-    public Code getChildCode() {
+    public CodeEntity getChildCode() {
         return childCode;
     }
 
-    public void setChildCode(Code childCode) {
+    public void setChildCode(CodeEntity childCode) {
         this.childCode = childCode;
     }
 }
