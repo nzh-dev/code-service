@@ -27,9 +27,7 @@ git clone https://github.com/nzh-dev/code-service.git
 Create DB container
 
 ```
-cd database
 docker build -t nzh-dev-postgres .
-cd ..
 ```
 
 Start DB container

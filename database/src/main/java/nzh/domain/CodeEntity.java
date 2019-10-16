@@ -8,16 +8,16 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "code")
-public class Code extends Audit {
+public class CodeEntity extends Audit {
     private Integer id;
-    private String codeId;
-    private String codeText;
+    private String setId;
+    private String setName;
     private String valueId;
     private String valueText;
     private String creator;
     private String modifier;
     private Integer optlock;
-    private Collection<CodeRelation> parentCodeRelationsByValueId;
+    private Collection<CodeRelationEntity> parentCodeRelationsByValueId;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -31,23 +31,23 @@ public class Code extends Audit {
     }
 
     @Basic
-    @Column(name = "code_id", nullable = false, length = -1)
-    public String getCodeId() {
-        return codeId;
+    @Column(name = "set_id", nullable = false, length = -1)
+    public String getSetId() {
+        return setId;
     }
 
-    public void setCodeId(String codeId) {
-        this.codeId = codeId;
+    public void setSetId(String setId) {
+        this.setId = setId;
     }
 
     @Basic
-    @Column(name = "code_text", nullable = false, length = -1)
-    public String getCodeText() {
-        return codeText;
+    @Column(name = "set_name", nullable = false, length = -1)
+    public String getSetName() {
+        return setName;
     }
 
-    public void setCodeText(String codeText) {
-        this.codeText = codeText;
+    public void setSetName(String setName) {
+        this.setName = setName;
     }
 
     @Basic
@@ -105,11 +105,11 @@ public class Code extends Audit {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Code code = (Code) o;
+        CodeEntity code = (CodeEntity) o;
 
         if (id != null ? !id.equals(code.id) : code.id != null) return false;
-        if (codeId != null ? !codeId.equals(code.codeId) : code.codeId != null) return false;
-        if (codeText != null ? !codeText.equals(code.codeText) : code.codeText != null) return false;
+        if (setId != null ? !setId.equals(code.setId) : code.setId != null) return false;
+        if (setName != null ? !setName.equals(code.setName) : code.setName != null) return false;
         if (valueId != null ? !valueId.equals(code.valueId) : code.valueId != null) return false;
         if (valueText != null ? !valueText.equals(code.valueText) : code.valueText != null) return false;
         if (creator != null ? !creator.equals(code.creator) : code.creator != null) return false;
@@ -122,8 +122,8 @@ public class Code extends Audit {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (codeId != null ? codeId.hashCode() : 0);
-        result = 31 * result + (codeText != null ? codeText.hashCode() : 0);
+        result = 31 * result + (setId != null ? setId.hashCode() : 0);
+        result = 31 * result + (setName != null ? setName.hashCode() : 0);
         result = 31 * result + (valueId != null ? valueId.hashCode() : 0);
         result = 31 * result + (valueText != null ? valueText.hashCode() : 0);
         result = 31 * result + (creator != null ? creator.hashCode() : 0);
@@ -133,11 +133,11 @@ public class Code extends Audit {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "childCode")
-    public Collection<CodeRelation> getParentCodeRelationsByValueId() {
+    public Collection<CodeRelationEntity> getParentCodeRelationsByValueId() {
         return parentCodeRelationsByValueId;
     }
 
-    public void setParentCodeRelationsByValueId(Collection<CodeRelation> parentCodeRelationsByValueId) {
+    public void setParentCodeRelationsByValueId(Collection<CodeRelationEntity> parentCodeRelationsByValueId) {
         this.parentCodeRelationsByValueId = parentCodeRelationsByValueId;
     }
 }
