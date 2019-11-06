@@ -116,7 +116,8 @@ List of features and ideas to be added to code-service project in the future.
 * Authentication
 * Security
 * Properties
-* Frontend application!
+* Create Frontend application
 * Update Java 8 to Java 11
 * Change data source from relational to something else (hierarchy)
-* Implement the same logi with some other language and frameworks
+* Implement the same logig with some other language and frameworks
+* Implement the same solution to: AWS, Azure or GCP
