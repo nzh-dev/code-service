@@ -1,20 +1,23 @@
 package nzh.dev.codeservice.model;
 
+import java.util.List;
+
 /**
  * Created by nzh-dev on 16/10/2019.
  */
 public class Code {
-    private String id;
+    private String valueId;
     private String value;
     private String setId;
     private String setName;
+    private List<String> parentValueIds;
 
-    public String getId() {
-        return id;
+    public String getValueId() {
+        return valueId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setValueId(String valueId) {
+        this.valueId = valueId;
     }
 
     public String getValue() {
@@ -39,5 +42,13 @@ public class Code {
 
     public void setSetName(String setName) {
         this.setName = setName;
+    }
+
+    public List<String> getParentValueIds() {
+        return parentValueIds;
+    }
+
+    public void setParentValueIds(List<String> parentValueIds) {
+        this.parentValueIds = parentValueIds;
     }
 }
