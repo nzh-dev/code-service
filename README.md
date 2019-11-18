@@ -125,5 +125,5 @@ List of features and ideas to be added to code-service project in the future.
 List of tasks completed from Todo list.
 
 * 18.11.2019 
-** Create DTO Class
-** Map Hibernate domain objects to DTO Class
+   * Create DTO Class
+   * Map Hibernate domain objects to DTO Class
