@@ -101,8 +101,6 @@ List of features and ideas to be added to code-service project in the future.
     * Unit tests
     * Integration tests
     * e2e tests
-* DTO Class
-* Map Hibernate domain objects to DTO Class
 * Javadoc
 * Swagger UI
 * Linting
@@ -121,3 +119,11 @@ List of features and ideas to be added to code-service project in the future.
 * Change data source from relational to something else (hierarchy)
 * Implement the same logig with some other language and frameworks
 * Implement the same solution to: AWS, Azure or GCP
+
+## Done list
+
+List of tasks completed from Todo list.
+
+* 18.11.2019 
+** Create DTO Class
+** Map Hibernate domain objects to DTO Class
