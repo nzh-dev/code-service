@@ -4,17 +4,14 @@ import nzh.dev.codeservice.model.Code;
 import nzh.domain.CodeRelationEntity;
 import nzh.domain.CodeEntity;
 import org.modelmapper.PropertyMap;
-import org.modelmapper.Converter;
-import java.util.Collection;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.ArrayList;
-import org.modelmapper.PropertyMap;
 import java.util.stream.Collectors;
 
 /**
  * Created by nzh-dev on 16/10/2019.
  */
+@Component
 public class CodeEntityMapper extends AbstractMapper {
 
     public CodeEntityMapper() {

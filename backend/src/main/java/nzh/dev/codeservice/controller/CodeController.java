@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,18 +22,19 @@ public class CodeController {
     @Autowired
     private CodeRepository codeRepository;
 
+    @Autowired
+    private CodeEntityMapper codeEntityMapper;
+
     @GetMapping("/codes")
     public List<Code> getCodes(Pageable pageable) {
-
         Page<CodeEntity> codeEntityPage = codeRepository.findAll(pageable);
-        CodeEntityMapper mapper = new CodeEntityMapper();
-        List<Code> codes = codeEntityPage.stream().map(codeEntity -> mapper.map(codeEntity)).collect(Collectors.toList());
-
+        List<Code> codes = codeEntityPage.stream().map(codeEntity -> codeEntityMapper.map(codeEntity)).collect(Collectors.toList());
         return codes;
     }
 
     @GetMapping(value = "/codes/{setId}")
-    public CodeEntity getCodeBySetId(@PathVariable Integer setId) {
-        return codeRepository.findById(setId).orElseThrow(() -> new CodeNotFoundException("CodeEntity not found with set id " + setId));
+    public Code getCodeBySetId(@PathVariable Integer setId) {
+        CodeEntity codeEntity = codeRepository.findById(setId).orElseThrow(() -> new CodeNotFoundException("CodeEntity not found with set id " + setId));
+        return codeEntityMapper.map(codeEntity);
     }
 }
