@@ -11,6 +11,7 @@ Note! Instruction have been verified only with Mac OS X 10.14.6.
 ### Prerequisites
 
 * Java 8
+* Git
 * Gradle 5.3.1
 * Docker container execution environment
 
