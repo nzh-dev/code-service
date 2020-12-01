@@ -6,8 +6,6 @@ This is my example and training project that creates application called code-ser
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Note! Instruction have been verified only with Mac OS X 10.14.6.
-
 ### Prerequisites
 
 * Java 8
